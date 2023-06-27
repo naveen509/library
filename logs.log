@@ -7,3 +7,12 @@
 {"level":"info","message":"Server is running on http://localhost:8060"}
 {"level":"info","message":"Server is running on http://localhost:8060"}
 {"level":"error","message":"Failed to generate report: Operation `authors.find()` buffering timed out after 10000ms","stack":"MongooseError: Operation `authors.find()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (C:\\Users\\navee\\OneDrive\\Desktop\\cba\\library\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\collection.js:185:23)\n    at listOnTimeout (node:internal/timers:564:17)\n    at process.processTimers (node:internal/timers:507:7)"}
+{"level":"info","message":"Server is running on http://localhost:8060"}
+{"level":"info","message":"Server is running on http://localhost:8060"}
+{"level":"info","message":"Server is running on http://localhost:8060"}
+{"level":"info","message":"Server is running on http://localhost:8060"}
+{"level":"error","message":"Failed to generate report: Operation `authors.find()` buffering timed out after 10000ms","stack":"MongooseError: Operation `authors.find()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (C:\\Users\\navee\\OneDrive\\Desktop\\cba\\library\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\collection.js:185:23)\n    at listOnTimeout (node:internal/timers:564:17)\n    at process.processTimers (node:internal/timers:507:7)"}
+{"level":"error","message":"Failed to generate report: Operation `authors.find()` buffering timed out after 10000ms","stack":"MongooseError: Operation `authors.find()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (C:\\Users\\navee\\OneDrive\\Desktop\\cba\\library\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\collection.js:185:23)\n    at listOnTimeout (node:internal/timers:564:17)\n    at process.processTimers (node:internal/timers:507:7)"}
+{"level":"info","message":"Server is running on http://localhost:8060"}
+{"level":"info","message":"Server is running on http://localhost:8060"}
+{"level":"info","message":"Report generated:"}
