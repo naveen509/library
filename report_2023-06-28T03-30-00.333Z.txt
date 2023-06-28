@@ -1,0 +1,3 @@
+John Doe: 4 likes
+John 1 Doe 2: 0 likes
+John 3 Doe 3: 0 likes
