@@ -16,20 +16,38 @@ const logger = winston.createLogger({
 
 // Register a new book
 router.post('/', async (req, res) => {
-    try {
-      const { isbn, category, title, authorId } = req.body;
-      const author = await Author.findById(authorId);
-      if (!author) {
-        return res.status(400).json({ error: 'Invalid author ID' });
-      }
-      const book = await Book.create({ isbn, category, title, author });
-      res.status(201).json(book);
-      logger.info('New book registered:', book);
-    } catch (error) {
-      res.status(500).json({ error: 'Failed to register book' });
-      logger.error('Failed to register book:', error);
+  try {
+    const { isbn, category, title, authorId } = req.body;
+    const author = await Author.findById(authorId);
+    if (!author) {
+      return res.status(400).json({ error: 'Invalid author ID' });
     }
-  });
+
+    // Validate ISBN
+    const isbnRegex = /^[a-zA-Z0-9]+$/;
+    if (!isbnRegex.test(isbn)) {
+      return res.status(400).json({ error: 'ISBN should only contain alphanumeric characters' });
+    }
+
+    // Validate category
+    if (!category) {
+      return res.status(400).json({ error: 'Category is required' });
+    }
+
+    // Validate title
+    const titleRegex = /^[a-zA-Z0-9]+$/;
+    if (!titleRegex.test(title)) {
+      return res.status(400).json({ error: 'Title should only contain alphanumeric characters' });
+    }
+
+    const book = await Book.create({ isbn, category, title, author });
+    res.status(201).json(book);
+    logger.info('New book registered:', book);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to register book' });
+    logger.error('Failed to register book:', error);
+  }
+});
 
   // Search a book by ISBN
   router.get('/book/:isbn', async (req, res) => {
@@ -64,7 +82,7 @@ router.post('/', async (req, res) => {
   });
   
   // Generate report every 5 minute
-  schedule.scheduleJob('*/5 * * * *', async () => {
+  schedule.scheduleJob('*/1 * * * *', async () => {
     try {
       const authors = await Author.find();
       const reportData = authors.map((author) => ({
@@ -83,7 +101,7 @@ router.post('/', async (req, res) => {
   
       // Generate report file
       const timestamp = new Date().toISOString().replace(/:/g, '-');
-      const reportFilename = `../library/report_${timestamp}.txt`;
+      const reportFilename = `../Backend/report_${timestamp}.txt`;
       const reportContent = reportData
         .map((data) => `${data.authorName}: ${data.likeCount} likes`)
         .join('\n');
